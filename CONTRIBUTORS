@@ -1,0 +1,13 @@
+# This is the official list of people who can contribute
+# (and typically have contributed) code to the Zang Golang repository.
+# The AUTHORS file lists the copyright holders; this file
+# lists people.  For example, Zang employees are listed here
+# but not in AUTHORS, because Zang holds the copyright.
+#
+# Names should be added to this file like so:
+#     Individual's name <submission email address>
+#     Individual's name <submission email address> <email2> <emailN>
+#
+# Please keep the list sorted.
+
+Nevio Vesic <nevio@zang.io> <nevio@avaya.com>
