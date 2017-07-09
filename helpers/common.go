@@ -6,6 +6,7 @@ package helpers
 
 import (
 	"math/rand"
+	"net/url"
 	"strconv"
 	"time"
 )
@@ -34,4 +35,15 @@ func ToBool(value string, def bool) bool {
 func Random(min, max int) int {
 	rand.Seed(time.Now().Unix())
 	return rand.Intn(max-min) + min
+}
+
+// MapToUrlValues -
+func MapToUrlValues(data map[string]string) *url.Values {
+	data_values := &url.Values{}
+
+	for key, value := range data {
+		data_values.Add(key, value)
+	}
+
+	return data_values
 }

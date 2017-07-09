@@ -47,6 +47,21 @@ func (c *Config) Validate() error {
 	return nil
 }
 
+// SetCredentials - Will set account sid and auth token to desired account
+func (c *Config) SetCredentials(accountSid, authToken string) error {
+	if len(accountSid) != 34 || !strings.HasPrefix(accountSid, "AC") {
+		return fmt.Errorf("Make sure to provide valid AccountSid. You've provided: %s", accountSid)
+	}
+
+	if len(authToken) != 32 {
+		return fmt.Errorf("Make sure to provide valid AuthToken. You've provided: %s", authToken)
+	}
+
+	c.AccountSid = accountSid
+	c.AuthToken = authToken
+	return nil
+}
+
 // NewConfig -
 func NewConfig() (*Config, error) {
 	cfg := &Config{

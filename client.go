@@ -7,6 +7,7 @@ package zang
 // Client -
 type Client struct {
 	*Config
+	*Request
 }
 
 // NewClient -
@@ -16,5 +17,8 @@ func NewClient() (*Client, error) {
 		return nil, err
 	}
 
-	return &Client{Config: config}, nil
+	return &Client{
+		Config:  config,
+		Request: &Request{Config: config},
+	}, nil
 }
