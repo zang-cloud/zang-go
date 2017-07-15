@@ -86,3 +86,29 @@ func (c *Client) DeleteApplication(sid string, params map[string]string) (resp *
 	)
 	return
 }
+
+// GetApplicationClient -
+func (c *Client) GetApplicationClient(applicationSid string, sid string, params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	resp, err = c.Request.Get(
+		fmt.Sprintf("%s/Applications/%s/Clients/%s", c.Config.AccountSid, applicationSid, sid),
+		params,
+	)
+	return
+}
+
+// ListApplicationClients -
+func (c *Client) ListApplicationClients(applicationSid string, params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	resp, err = c.Request.Get(
+		fmt.Sprintf("%s/Applications/%s/Clients", c.Config.AccountSid, applicationSid),
+		params,
+	)
+	return
+}

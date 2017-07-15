@@ -10,21 +10,21 @@ import (
 	"github.com/zang-cloud/zang-go/helpers"
 )
 
-// ListSms -
-func (c *Client) ListSms(params map[string]string) (resp *Response, err error) {
+// ListMms -
+func (c *Client) ListMms(params map[string]string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
 
 	resp, err = c.Request.Get(
-		fmt.Sprintf("%s/SMS/Messages", c.Config.AccountSid),
+		fmt.Sprintf("%s/MMS/Messages", c.Config.AccountSid),
 		params,
 	)
 	return
 }
 
-// GetSms -
-func (c *Client) GetSms(sid string, params map[string]string) (resp *Response, err error) {
+// GetMms -
+func (c *Client) GetMms(sid string, params map[string]string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -34,20 +34,20 @@ func (c *Client) GetSms(sid string, params map[string]string) (resp *Response, e
 	}
 
 	resp, err = c.Request.Get(
-		fmt.Sprintf("%s/SMS/Messages/%s", c.Config.AccountSid, sid),
+		fmt.Sprintf("%s/MMS/Messages/%s", c.Config.AccountSid, sid),
 		params,
 	)
 	return
 }
 
-// SendSms -
-func (c *Client) SendSms(params map[string]string) (resp *Response, err error) {
+// SendMms -
+func (c *Client) SendMms(params map[string]string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
 
 	resp, err = c.Request.Create(
-		fmt.Sprintf("%s/SMS/Messages", c.Config.AccountSid),
+		fmt.Sprintf("%s/MMS/Messages", c.Config.AccountSid),
 		params,
 	)
 	return

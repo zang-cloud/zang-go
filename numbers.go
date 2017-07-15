@@ -3,3 +3,99 @@
 // license that can be found in the LICENSE file.
 
 package zang
+
+import (
+	"fmt"
+
+	"github.com/zang-cloud/zang-go/helpers"
+)
+
+// ListNumbers -
+func (c *Client) ListNumbers(params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	resp, err = c.Request.Get(
+		fmt.Sprintf("%s/IncomingPhoneNumbers", c.Config.AccountSid),
+		params,
+	)
+	return
+}
+
+// GetNumber -
+func (c *Client) GetNumber(sid string, params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	if verr := helpers.ValidateSid(sid); err != nil {
+		return nil, verr
+	}
+
+	resp, err = c.Request.Get(
+		fmt.Sprintf("%s/IncomingPhoneNumbers/%s", c.Config.AccountSid, sid),
+		params,
+	)
+	return
+}
+
+// PurchaseNumber -
+func (c *Client) PurchaseNumber(params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	resp, err = c.Request.Create(
+		fmt.Sprintf("%s/IncomingPhoneNumbers", c.Config.AccountSid),
+		params,
+	)
+	return
+}
+
+// UpdateNumber -
+func (c *Client) UpdateNumber(sid string, params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	if verr := helpers.ValidateSid(sid); err != nil {
+		return nil, verr
+	}
+
+	resp, err = c.Request.Update(
+		fmt.Sprintf("%s/IncomingPhoneNumbers/%s", c.Config.AccountSid, sid),
+		params,
+	)
+	return
+}
+
+// DeleteNumber -
+func (c *Client) DeleteNumber(sid string, params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	if verr := helpers.ValidateSid(sid); err != nil {
+		return nil, verr
+	}
+
+	resp, err = c.Request.Delete(
+		fmt.Sprintf("%s/IncomingPhoneNumbers/%s", c.Config.AccountSid, sid),
+		params,
+	)
+	return
+}
+
+// ListAvailableNumbers -
+func (c *Client) ListAvailableNumbers(country string, params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	resp, err = c.Request.Get(
+		fmt.Sprintf("%s/AvailablePhoneNumbers/%s", c.Config.AccountSid, country),
+		params,
+	)
+	return
+}

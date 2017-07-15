@@ -3,3 +3,39 @@
 // license that can be found in the LICENSE file.
 
 package zang
+
+import (
+	"fmt"
+
+	"github.com/zang-cloud/zang-go/helpers"
+)
+
+// ListUsages -
+func (c *Client) ListUsages(params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	resp, err = c.Request.Get(
+		fmt.Sprintf("%s/Usages", c.Config.AccountSid),
+		params,
+	)
+	return
+}
+
+// GetUsage -
+func (c *Client) GetUsage(sid string, params map[string]string) (resp *Response, err error) {
+	if cerr := c.Config.Validate(); cerr != nil {
+		return nil, cerr
+	}
+
+	if verr := helpers.ValidateSid(sid); err != nil {
+		return nil, verr
+	}
+
+	resp, err = c.Request.Get(
+		fmt.Sprintf("%s/Usages/%s", c.Config.AccountSid, sid),
+		params,
+	)
+	return
+}
