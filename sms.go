@@ -24,7 +24,7 @@ func (c *Client) ListSms(params map[string]string) (resp *Response, err error) {
 }
 
 // GetSms -
-func (c *Client) GetSms(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetSms(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetSms(sid string, params map[string]string) (resp *Response, e
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/SMS/Messages/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
