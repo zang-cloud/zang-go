@@ -24,7 +24,7 @@ func (c *Client) ListConferences(params map[string]string) (resp *Response, err 
 }
 
 // GetConference -
-func (c *Client) GetConference(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetConference(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetConference(sid string, params map[string]string) (resp *Resp
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Conferences/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
@@ -57,8 +57,8 @@ func (c *Client) ListParticipants(sid string, params map[string]string) (resp *R
 	return
 }
 
-// ViewParticipant -
-func (c *Client) ViewParticipant(conferenceSid string, sid string, params map[string]string) (resp *Response, err error) {
+// GetParticipant -
+func (c *Client) GetParticipant(conferenceSid string, sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -69,12 +69,12 @@ func (c *Client) ViewParticipant(conferenceSid string, sid string, params map[st
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Conferences/%s/Participants/%s", c.Config.AccountSid, conferenceSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
 
-// ViewParticipant -
+// MuteOrDeafParticipant -
 func (c *Client) MuteOrDeafParticipant(conferenceSid string, sid string, params map[string]string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
@@ -109,7 +109,7 @@ func (c *Client) PlayParticipant(conferenceSid string, sid string, params map[st
 }
 
 // HangupParticipant -
-func (c *Client) HangupParticipant(conferenceSid string, sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) HangupParticipant(conferenceSid string, sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -120,7 +120,7 @@ func (c *Client) HangupParticipant(conferenceSid string, sid string, params map[
 
 	resp, err = c.Request.Delete(
 		fmt.Sprintf("%s/Conferences/%s/Participants/%s", c.Config.AccountSid, conferenceSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
