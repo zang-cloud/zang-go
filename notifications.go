@@ -23,8 +23,8 @@ func (c *Client) ListNotifications(params map[string]string) (resp *Response, er
 	return
 }
 
-// GetRecording -
-func (c *Client) GetNotification(sid string, params map[string]string) (resp *Response, err error) {
+// GetNotification -
+func (c *Client) GetNotification(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetNotification(sid string, params map[string]string) (resp *Re
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Notifications/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
