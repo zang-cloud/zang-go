@@ -24,7 +24,7 @@ func (c *Client) ListTranscriptions(params map[string]string) (resp *Response, e
 }
 
 // GetTranscription -
-func (c *Client) GetTranscription(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetTranscription(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetTranscription(sid string, params map[string]string) (resp *R
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Transcriptions/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }

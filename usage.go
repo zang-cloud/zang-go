@@ -24,7 +24,7 @@ func (c *Client) ListUsages(params map[string]string) (resp *Response, err error
 }
 
 // GetUsage -
-func (c *Client) GetUsage(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetUsage(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetUsage(sid string, params map[string]string) (resp *Response,
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Usages/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
