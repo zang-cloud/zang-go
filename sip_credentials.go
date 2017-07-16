@@ -24,7 +24,7 @@ func (c *Client) ListCredentialLists(params map[string]string) (resp *Response, 
 }
 
 // GetCredentialList -
-func (c *Client) GetCredentialList(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetCredentialList(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetCredentialList(sid string, params map[string]string) (resp *
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/SIP/CredentialLists/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
@@ -71,7 +71,7 @@ func (c *Client) UpdateCredentialList(sid string, params map[string]string) (res
 }
 
 // DeleteCredentialList -
-func (c *Client) DeleteCredentialList(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) DeleteCredentialList(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -82,13 +82,13 @@ func (c *Client) DeleteCredentialList(sid string, params map[string]string) (res
 
 	resp, err = c.Request.Delete(
 		fmt.Sprintf("%s/SIP/CredentialLists/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
 
-// ListSipCredential -
-func (c *Client) ListSipCredential(credentialListSid string, params map[string]string) (resp *Response, err error) {
+// ListSipCredentials -
+func (c *Client) ListSipCredentials(credentialListSid string, params map[string]string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -101,7 +101,7 @@ func (c *Client) ListSipCredential(credentialListSid string, params map[string]s
 }
 
 // GetSipCredential -
-func (c *Client) GetSipCredential(credentialListSid string, sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetSipCredential(credentialListSid string, sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -112,7 +112,7 @@ func (c *Client) GetSipCredential(credentialListSid string, sid string, params m
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/SIP/CredentialLists/%s/Credentials/%s", c.Config.AccountSid, credentialListSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
@@ -148,7 +148,7 @@ func (c *Client) UpdateSipCredential(credentialListSid string, sid string, param
 }
 
 // DeleteSipCredential -
-func (c *Client) DeleteSipCredential(credentialListSid string, sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) DeleteSipCredential(credentialListSid string, sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -159,7 +159,7 @@ func (c *Client) DeleteSipCredential(credentialListSid string, sid string, param
 
 	resp, err = c.Request.Delete(
 		fmt.Sprintf("%s/SIP/CredentialLists/%s/Credentials/%s", c.Config.AccountSid, credentialListSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }

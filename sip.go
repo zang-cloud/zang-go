@@ -25,7 +25,7 @@ func (c *Client) ListSipDomains(params map[string]string) (resp *Response, err e
 }
 
 // GetSipDomain -
-func (c *Client) GetSipDomain(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetSipDomain(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -36,7 +36,7 @@ func (c *Client) GetSipDomain(sid string, params map[string]string) (resp *Respo
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/SIP/Domains/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
@@ -72,7 +72,7 @@ func (c *Client) UpdateSipDomain(sid string, params map[string]string) (resp *Re
 }
 
 // DeleteSipDomain -
-func (c *Client) DeleteSipDomain(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) DeleteSipDomain(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -83,7 +83,7 @@ func (c *Client) DeleteSipDomain(sid string, params map[string]string) (resp *Re
 
 	resp, err = c.Request.Delete(
 		fmt.Sprintf("%s/SIP/Domains/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
