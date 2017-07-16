@@ -29,11 +29,26 @@ REST
 See the `Zang REST API documentation <http://docs.zang.io/docs/overview>`_
 for more information.
 
+**NOTE: ** Please go through tests for specific endpoint to see the example
+
 Send SMS Example
 ----------------
 
 .. code-block:: golang
+  package example
 
+  import (
+  	"fmt"
+  	"github.com/zang-cloud/zang-go"
+  )
+
+  response, _ := client.SendSms(map[string]string{
+    "From": "E.164 Number Format",
+    "To":   "E.164 Number Format",
+    "Body": "SMS Body",
+  })
+
+  fmt.Printf("Send sms response: %+v", response)
 
 .. code-block:: golang
 
@@ -52,7 +67,7 @@ For more information please visit the `Zang InboundXML documentation
   ixml, err := New(Response{Say: &Say{
     Voice: "female",
     Value: "Welcome to Zang!",
-    Loop: 3,
+    Loop:  3,
   }})
 
   fmt.Print(ixml)
