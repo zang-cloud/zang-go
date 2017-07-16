@@ -24,7 +24,7 @@ func (c *Client) ListApplications(params map[string]string) (resp *Response, err
 }
 
 // GetApplication -
-func (c *Client) GetApplication(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetApplication(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetApplication(sid string, params map[string]string) (resp *Res
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Applications/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
@@ -71,7 +71,7 @@ func (c *Client) UpdateApplication(sid string, params map[string]string) (resp *
 }
 
 // DeleteApplication -
-func (c *Client) DeleteApplication(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) DeleteApplication(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -82,20 +82,20 @@ func (c *Client) DeleteApplication(sid string, params map[string]string) (resp *
 
 	resp, err = c.Request.Delete(
 		fmt.Sprintf("%s/Applications/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
 
 // GetApplicationClient -
-func (c *Client) GetApplicationClient(applicationSid string, sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetApplicationClient(applicationSid string, sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Applications/%s/Clients/%s", c.Config.AccountSid, applicationSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }

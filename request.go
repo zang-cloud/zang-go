@@ -58,6 +58,7 @@ func (r *Request) GetApiUrl(uri string) string {
 
 // Get - Will initiate GET request towards api
 func (r *Request) Get(uri string, params map[string]string) (resp *Response, err error) {
+	fmt.Printf("[get] received params: %+v", params)
 	if resp, err = r.request("GET", r.GetApiUrl(uri), params); err != nil {
 		return nil, err
 	}
@@ -94,10 +95,24 @@ func (r *Request) request(method string, url string, params map[string]string) (
 		Timeout: 60 * time.Second,
 	}
 
-	req, err := http.NewRequest(method, url, bytes.NewBufferString(helpers.MapToUrlValues(params).Encode()))
+	var buffer *bytes.Buffer
+
+	if method == "POST" || method == "PUT" {
+		buffer = bytes.NewBufferString(helpers.MapToUrlValues(params).Encode())
+	} else {
+		if len(params) > 0 {
+			url = fmt.Sprintf("%s?%s", url, helpers.MapToUrlValues(params).Encode())
+		}
+		buffer = bytes.NewBufferString("")
+	}
+
+	fmt.Printf("[request] encoded params: %+v \n", helpers.MapToUrlValues(params).Encode())
+	req, err := http.NewRequest(method, url, buffer)
 	if err != nil {
 		return nil, err
 	}
+
+	fmt.Printf("[request] full request url: %s \n", req.URL.String())
 
 	req.SetBasicAuth(r.Config.AccountSid, r.Config.AuthToken)
 	resp, err := client.Do(req)
@@ -117,6 +132,10 @@ func (r *Request) request(method string, url string, params map[string]string) (
 
 	if err := json.Unmarshal(bodyBytes, &jsonData); err != nil {
 		return nil, err
+	}
+
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("An unexpected response returned from Zang API (Status Code: %d): %s", resp.StatusCode, bodyBytes)
 	}
 
 	return &Response{
