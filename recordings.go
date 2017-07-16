@@ -24,7 +24,7 @@ func (c *Client) ListRecordings(params map[string]string) (resp *Response, err e
 }
 
 // GetRecording -
-func (c *Client) GetRecording(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetRecording(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,13 +35,13 @@ func (c *Client) GetRecording(sid string, params map[string]string) (resp *Respo
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/Recordings/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
 
 // DeleteRecording -
-func (c *Client) DeleteRecording(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) DeleteRecording(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -52,7 +52,7 @@ func (c *Client) DeleteRecording(sid string, params map[string]string) (resp *Re
 
 	resp, err = c.Request.Delete(
 		fmt.Sprintf("%s/Recordings/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
