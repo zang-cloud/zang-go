@@ -46,14 +46,14 @@ func (c *Client) AuthorizeDestination(countryCode string, params map[string]stri
 }
 
 // ExtendDestination -
-func (c *Client) ExtendDestination(countryCode string, params map[string]string) (resp *Response, err error) {
+func (c *Client) ExtendDestination(countryCode string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
 
 	resp, err = c.Request.Create(
 		fmt.Sprintf("%s/Fraud/Extend/%s", c.Config.AccountSid, countryCode),
-		params,
+		map[string]string{},
 	)
 	return
 }

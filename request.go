@@ -38,6 +38,15 @@ func (r *Response) GetSubResource(jsonKey string) []map[string]interface{} {
 	return response
 }
 
+// GetSingleResource - Get single subresource (useful if you're listing for exmple, accounts)
+func (r *Response) GetSingleResource(jsonKey string) map[string]interface{} {
+	if r.Resource[jsonKey] == nil {
+		return nil
+	}
+
+	return r.Resource[jsonKey].(map[string]interface{})
+}
+
 // Request - helper designed to handle generic requests towards api interface
 type Request struct {
 	*Config
