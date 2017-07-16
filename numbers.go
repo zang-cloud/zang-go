@@ -24,7 +24,7 @@ func (c *Client) ListNumbers(params map[string]string) (resp *Response, err erro
 }
 
 // GetNumber -
-func (c *Client) GetNumber(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) GetNumber(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetNumber(sid string, params map[string]string) (resp *Response
 
 	resp, err = c.Request.Get(
 		fmt.Sprintf("%s/IncomingPhoneNumbers/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
@@ -71,7 +71,7 @@ func (c *Client) UpdateNumber(sid string, params map[string]string) (resp *Respo
 }
 
 // DeleteNumber -
-func (c *Client) DeleteNumber(sid string, params map[string]string) (resp *Response, err error) {
+func (c *Client) DeleteNumber(sid string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
@@ -82,19 +82,19 @@ func (c *Client) DeleteNumber(sid string, params map[string]string) (resp *Respo
 
 	resp, err = c.Request.Delete(
 		fmt.Sprintf("%s/IncomingPhoneNumbers/%s", c.Config.AccountSid, sid),
-		params,
+		map[string]string{},
 	)
 	return
 }
 
 // ListAvailableNumbers -
-func (c *Client) ListAvailableNumbers(country string, params map[string]string) (resp *Response, err error) {
+func (c *Client) ListAvailableNumbers(country string, numberType string, params map[string]string) (resp *Response, err error) {
 	if cerr := c.Config.Validate(); cerr != nil {
 		return nil, cerr
 	}
 
 	resp, err = c.Request.Get(
-		fmt.Sprintf("%s/AvailablePhoneNumbers/%s", c.Config.AccountSid, country),
+		fmt.Sprintf("%s/AvailablePhoneNumbers/%s/%s", c.Config.AccountSid, country, numberType),
 		params,
 	)
 	return
