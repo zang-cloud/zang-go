@@ -48,6 +48,7 @@ Send SMS Example
 ----------------
 
 .. code-block:: golang
+
   package example
 
   import (
