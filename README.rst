@@ -23,6 +23,15 @@ Clone the repo, and install via ``go get``:
 Usage
 ======
 
+Authorization
+----
+In order to authorize against Zang Cloud services you'll have to define authentication credentials. 
+
+.. code-block:: bash
+    export ZANG_CLOUD_ACCOUNT_SID="{YourAccountSid}"
+    export ZANG_CLOUD_ACCESS_TOKEN="{YourAccessToken}"
+.. code-block:: bash
+
 REST
 ----
 
