@@ -17,7 +17,9 @@ Installation
 Clone the repo, and install via ``go get``:
 
 .. code-block:: bash
+
     $ go get -u github.com/zang-cloud/zang-go
+    
 .. code-block:: bash
 
 Usage
