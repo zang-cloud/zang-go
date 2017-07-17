@@ -56,7 +56,7 @@ Send SMS Example
   	zang "github.com/zang-cloud/zang-go"
   )
 
-  client, err := zang.NewClient()
+  client, _ := zang.NewClient()
 
   response, _ := client.SendSms(map[string]string{
     "From": "E.164 Number Format",
