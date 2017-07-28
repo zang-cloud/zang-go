@@ -7,10 +7,10 @@ package zang
 import (
 	"fmt"
 	"net/url"
+	"os"
 	"strings"
 
-	"github.com/0x19/zang-go/helpers"
-	"github.com/0x19/zang-go/options"
+	"github.com/zang-cloud/micro-common/options"
 )
 
 // Config - Configuration struct, designed to be
@@ -20,6 +20,15 @@ type Config struct {
 	AccountSid          string
 	AuthToken           string
 	ResponseContentType string
+}
+
+// OptionString - Will return ENV value back based on provided name casted as string
+func OptionString(name, def string) string {
+	if res := os.Getenv(name); res != "" {
+		return string(res)
+	}
+
+	return def
 }
 
 // Validate - Will validate client configuration and return error if any issues are found
@@ -40,7 +49,7 @@ func (c *Config) Validate() error {
 		return fmt.Errorf("Make sure to provide valid AuthToken. You've provided: %s", c.AuthToken)
 	}
 
-	if !helpers.StringInSlice(c.ResponseContentType, AvailableResponseContentTypes) {
+	if !StringInSlice(c.ResponseContentType, AvailableResponseContentTypes) {
 		return fmt.Errorf("Make sure to provide valid response content type. You've provided: %s. Available are: %v", c.AuthToken, AvailableResponseContentTypes)
 	}
 

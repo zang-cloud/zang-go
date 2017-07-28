@@ -6,8 +6,6 @@ package zang
 
 import (
 	"fmt"
-
-	"github.com/zang-cloud/zang-go/helpers"
 )
 
 // ListCredentialLists -
@@ -29,7 +27,7 @@ func (c *Client) GetCredentialList(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -59,7 +57,7 @@ func (c *Client) UpdateCredentialList(sid string, params map[string]string) (res
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -76,7 +74,7 @@ func (c *Client) DeleteCredentialList(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -106,7 +104,7 @@ func (c *Client) GetSipCredential(credentialListSid string, sid string) (resp *R
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -136,7 +134,7 @@ func (c *Client) UpdateSipCredential(credentialListSid string, sid string, param
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -153,7 +151,7 @@ func (c *Client) DeleteSipCredential(credentialListSid string, sid string) (resp
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 

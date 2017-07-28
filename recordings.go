@@ -6,8 +6,6 @@ package zang
 
 import (
 	"fmt"
-
-	"github.com/zang-cloud/zang-go/helpers"
 )
 
 // ListRecordings -
@@ -29,7 +27,7 @@ func (c *Client) GetRecording(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -46,7 +44,7 @@ func (c *Client) DeleteRecording(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 

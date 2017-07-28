@@ -6,8 +6,6 @@ package zang
 
 import (
 	"fmt"
-
-	"github.com/zang-cloud/zang-go/helpers"
 )
 
 // ListSipDomains -
@@ -30,7 +28,7 @@ func (c *Client) GetSipDomain(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -60,7 +58,7 @@ func (c *Client) UpdateSipDomain(sid string, params map[string]string) (resp *Re
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -77,7 +75,7 @@ func (c *Client) DeleteSipDomain(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 

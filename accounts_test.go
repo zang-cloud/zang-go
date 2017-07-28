@@ -16,59 +16,60 @@ func TestGetAccount(t *testing.T) {
 	client, err := NewClient()
 
 	Convey("New Client With Defaults", t, func() {
+		So(err, ShouldBeNil)
 		So(client, ShouldNotBeNil)
-		So(err, ShouldBeNil)
-	})
 
-	Convey("Accounts retrieval successful", t, func() {
-		response, err := client.GetAccounts(nil)
-		So(response, ShouldNotBeNil)
-		So(err, ShouldBeNil)
+		Convey("Accounts retrieval successful", func() {
+			response, err := client.GetAccounts(nil)
+			So(response, ShouldNotBeNil)
+			So(err, ShouldBeNil)
 
-		So(response.Response, ShouldHaveSameTypeAs, &http.Response{})
-		So(response.Resource, ShouldNotBeNil)
+			So(response.Response, ShouldHaveSameTypeAs, &http.Response{})
+			So(response.Resource, ShouldNotBeNil)
 
-		subResource := response.GetSubResource("accounts")
+			subResource := response.GetSubResource("accounts")
 
-		So(len(subResource), ShouldBeGreaterThan, 0)
+			So(len(subResource), ShouldBeGreaterThan, 0)
 
-		for account := range subResource {
-			So(subResource[account]["sid"], ShouldEqual, os.Getenv("ZANG_CLOUD_ACCOUNT_SID"))
-		}
-	})
+			for account := range subResource {
+				So(subResource[account]["sid"], ShouldEqual, os.Getenv("ZANG_CLOUD_ACCOUNT_SID"))
+			}
+		})
 
-	Convey("Account retrieval successful", t, func() {
-		response, err := client.GetAccount()
-		So(response, ShouldNotBeNil)
-		So(err, ShouldBeNil)
+		Convey("Account retrieval successful", func() {
+			response, err := client.GetAccount()
+			So(response, ShouldNotBeNil)
+			So(err, ShouldBeNil)
 
-		So(response.Response, ShouldHaveSameTypeAs, &http.Response{})
-		So(response.Resource, ShouldNotBeNil)
+			So(response.Response, ShouldHaveSameTypeAs, &http.Response{})
+			So(response.Resource, ShouldNotBeNil)
 
-		So(response.Resource["sid"], ShouldEqual, os.Getenv("ZANG_CLOUD_ACCOUNT_SID"))
+			So(response.Resource["sid"], ShouldEqual, os.Getenv("ZANG_CLOUD_ACCOUNT_SID"))
+		})
 	})
 
 }
 
 func TestUpdateAccount(t *testing.T) {
-	client, err := NewClient()
-
 	Convey("New Client With Defaults", t, func() {
+		client, err := NewClient()
+
+		So(err, ShouldBeNil)
 		So(client, ShouldNotBeNil)
-		So(err, ShouldBeNil)
-	})
 
-	Convey("Account retrieval successful", t, func() {
-		response, err := client.UpdateAccount(map[string]string{
-			"FriendlyName": "Nevio testing helper",
+		Convey("Account retrieval successful", func() {
+			response, err := client.UpdateAccount(map[string]string{
+				"FriendlyName": "Nevio testing helper",
+			})
+			So(response, ShouldNotBeNil)
+			So(err, ShouldBeNil)
+
+			So(response.Response, ShouldHaveSameTypeAs, &http.Response{})
+			So(response.Resource, ShouldNotBeNil)
+
+			So(response.Resource["sid"], ShouldEqual, os.Getenv("ZANG_CLOUD_ACCOUNT_SID"))
+			So(response.Resource["friendly_name"], ShouldEqual, "Nevio testing helper")
 		})
-		So(response, ShouldNotBeNil)
-		So(err, ShouldBeNil)
 
-		So(response.Response, ShouldHaveSameTypeAs, &http.Response{})
-		So(response.Resource, ShouldNotBeNil)
-
-		So(response.Resource["sid"], ShouldEqual, os.Getenv("ZANG_CLOUD_ACCOUNT_SID"))
-		So(response.Resource["friendly_name"], ShouldEqual, "Nevio testing helper")
 	})
 }

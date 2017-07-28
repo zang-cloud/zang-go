@@ -6,8 +6,6 @@ package zang
 
 import (
 	"fmt"
-
-	"github.com/zang-cloud/zang-go/helpers"
 )
 
 // ListNumbers -
@@ -29,7 +27,7 @@ func (c *Client) GetNumber(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -59,7 +57,7 @@ func (c *Client) UpdateNumber(sid string, params map[string]string) (resp *Respo
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -76,7 +74,7 @@ func (c *Client) DeleteNumber(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 

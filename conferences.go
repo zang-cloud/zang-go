@@ -6,8 +6,6 @@ package zang
 
 import (
 	"fmt"
-
-	"github.com/zang-cloud/zang-go/helpers"
 )
 
 // ListConferences -
@@ -29,7 +27,7 @@ func (c *Client) GetConference(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -46,7 +44,7 @@ func (c *Client) ListParticipants(sid string, params map[string]string) (resp *R
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -63,7 +61,7 @@ func (c *Client) GetParticipant(conferenceSid string, sid string) (resp *Respons
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -80,7 +78,7 @@ func (c *Client) MuteOrDeafParticipant(conferenceSid string, sid string, params 
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -97,7 +95,7 @@ func (c *Client) PlayParticipant(conferenceSid string, sid string, params map[st
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -114,7 +112,7 @@ func (c *Client) HangupParticipant(conferenceSid string, sid string) (resp *Resp
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 

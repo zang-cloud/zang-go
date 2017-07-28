@@ -11,8 +11,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"time"
-
-	"github.com/zang-cloud/zang-go/helpers"
 )
 
 // Response - generic response interface. one day we might wanna change this to static
@@ -107,15 +105,15 @@ func (r *Request) request(method string, url string, params map[string]string) (
 	var buffer *bytes.Buffer
 
 	if method == "POST" || method == "PUT" {
-		buffer = bytes.NewBufferString(helpers.MapToUrlValues(params).Encode())
+		buffer = bytes.NewBufferString(MapToUrlValues(params).Encode())
 	} else {
 		if len(params) > 0 {
-			url = fmt.Sprintf("%s?%s", url, helpers.MapToUrlValues(params).Encode())
+			url = fmt.Sprintf("%s?%s", url, MapToUrlValues(params).Encode())
 		}
 		buffer = bytes.NewBufferString("")
 	}
 
-	fmt.Printf("[request] encoded params: %+v \n", helpers.MapToUrlValues(params).Encode())
+	fmt.Printf("[request] encoded params: %+v \n", MapToUrlValues(params).Encode())
 	req, err := http.NewRequest(method, url, buffer)
 	if err != nil {
 		return nil, err

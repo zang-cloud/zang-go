@@ -6,8 +6,6 @@ package zang
 
 import (
 	"fmt"
-
-	"github.com/zang-cloud/zang-go/helpers"
 )
 
 // ListCalls -
@@ -29,7 +27,7 @@ func (c *Client) GetCall(sid string) (resp *Response, err error) {
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -59,7 +57,7 @@ func (c *Client) InterruptCall(sid string, params map[string]string) (resp *Resp
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -76,7 +74,7 @@ func (c *Client) SendDigitsCall(sid string, params map[string]string) (resp *Res
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -93,7 +91,7 @@ func (c *Client) RecordCall(sid string, params map[string]string) (resp *Respons
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -110,7 +108,7 @@ func (c *Client) PlayAudioCall(sid string, params map[string]string) (resp *Resp
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
@@ -127,7 +125,7 @@ func (c *Client) ApplyEffectsCall(sid string, params map[string]string) (resp *R
 		return nil, cerr
 	}
 
-	if verr := helpers.ValidateSid(sid); err != nil {
+	if verr := ValidateSid(sid); err != nil {
 		return nil, verr
 	}
 
