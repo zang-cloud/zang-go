@@ -20,4 +20,5 @@ type Response struct {
 	Record            *Record            `xml:"Record,omitempty"`
 	Redirect          *Redirect          `xml:"Redirect,omitempty"`
 	Sms               *Sms               `xml:"Sms,omitempty"`
+	Mms               *Mms               `xml:"Mms,omitempty"`
 }
