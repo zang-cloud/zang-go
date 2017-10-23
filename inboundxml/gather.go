@@ -13,6 +13,9 @@ package inboundxml
 // The gathered digits will then be submitted to the current InboundXML document.
 // This default behavior of <Gather> can be altered using the provided element attributes.
 type Gather struct {
+	Input       string `xml:"input,attr,omitempty"`
+	Language    string `xml:"language,attr,omitempty"`
+	Hints       string `xml:"hints,attr,omitempty"`
 	Action      string `xml:"action,attr,omitempty"`
 	Method      string `xml:"method,attr,omitempty"`
 	Timeout     int    `xml:"timeout,attr,omitempty"`
