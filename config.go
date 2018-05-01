@@ -9,8 +9,6 @@ import (
 	"net/url"
 	"os"
 	"strings"
-
-	"github.com/zang-cloud/micro-common/options"
 )
 
 // Config - Configuration struct, designed to be
@@ -74,11 +72,11 @@ func (c *Config) SetCredentials(accountSid, authToken string) error {
 // NewConfig -
 func NewConfig() (*Config, error) {
 	cfg := &Config{
-		ApiUrl:              options.OptionString("ZANG_CLOUD_API_URL", ZangApiUrl),
-		ApiVersion:          options.OptionString("ZANG_CLOUD_API_VERSION", ZangApiVersion),
-		AccountSid:          options.OptionString("ZANG_CLOUD_ACCOUNT_SID", ""),
-		AuthToken:           options.OptionString("ZANG_CLOUD_AUTH_TOKEN", ""),
-		ResponseContentType: options.OptionString("ZANG_CLOUD_RESPONSE_TYPE", DefaultResponseContentType),
+		ApiUrl:              OptionString("ZANG_CLOUD_API_URL", ZangApiUrl),
+		ApiVersion:          OptionString("ZANG_CLOUD_API_VERSION", ZangApiVersion),
+		AccountSid:          OptionString("ZANG_CLOUD_ACCOUNT_SID", ""),
+		AuthToken:           OptionString("ZANG_CLOUD_AUTH_TOKEN", ""),
+		ResponseContentType: OptionString("ZANG_CLOUD_RESPONSE_TYPE", DefaultResponseContentType),
 	}
 
 	if err := cfg.Validate(); err != nil {
