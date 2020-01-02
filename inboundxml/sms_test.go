@@ -15,7 +15,7 @@ func TestSmsElement(t *testing.T) {
 		ixml, err := New(Response{Sms: &Sms{
 			From:  "(phone_number)",
 			To:    "(phone_number)",
-			Value: "Test message sent from Zang!",
+			Value: "Test message sent from Avaya CPaaS!",
 		}})
 		So(ixml, ShouldNotBeNil)
 		So(err, ShouldBeNil)
