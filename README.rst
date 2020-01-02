@@ -2,11 +2,11 @@ zang-go
 ==========
 
 This golang package is an open source tool built to simplify interaction with
-the `Zang <http://www.zang.io>`_ telephony platform. Zang Cloud makes adding voice
+the `Zang <http://www.zang.io>`_ telephony platform. Avaya OneCloud™️ CPaaS  makes adding voice
 and SMS to applications fun and easy.
 
 For more information about Zang, please visit:
-`Zang Cloud <https://www.zang.io/products/cloud>`_
+`Avaya OneCloud™️ CPaaS  <https://www.zang.io/products/cloud>`_
 
 To read the official documentation, please visit: `Zang Docs <http://docs.zang.io/aspx/docs>`_.
 
@@ -27,7 +27,7 @@ Usage
 
 Authorization
 ----
-In order to authorize against Zang Cloud services you'll have to define authentication credentials. 
+In order to authorize against Avaya OneCloud™️ CPaaS  services you'll have to define authentication credentials.
 
 .. code-block:: bash
 
