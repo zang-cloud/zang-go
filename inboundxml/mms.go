@@ -1,12 +1,12 @@
-// Copyright 2017 The Zang Authors. All rights reserved.
+// Copyright 2017 Avaya Cloud Inc. All rights reserved.
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
 package inboundxml
 
-// Zang allows MMS messages to be sent during a call using the <Mms> element.
+// Avaya CPaaS allows MMS messages to be sent during a call using the <Mms> element.
 // The MMS receiver (to attribute) must be a valid phone number.
-// The sender (from attribute) must be one of your registered Zang numbers.
+// The sender (from attribute) must be one of your registered Avaya CPaaS numbers.
 // The text of the message should be placed inside the element and can not be longer than 160 characters.
 
 // The action attribute can be used to direct the MMS to a new InboundXML document for processing.

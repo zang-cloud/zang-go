@@ -2,13 +2,13 @@ zang-go
 ==========
 
 This golang package is an open source tool built to simplify interaction with
-the `Zang <http://www.zang.io>`_ telephony platform. Zang Cloud makes adding voice
+the `Avaya CPaaS <http://www.zang.io>`_ telephony platform. Avaya OneCloud™️ CPaaS  makes adding voice
 and SMS to applications fun and easy.
 
-For more information about Zang, please visit:
-`Zang Cloud <https://www.zang.io/products/cloud>`_
+For more information about Avaya CPaaS, please visit:
+`Avaya OneCloud™️ CPaaS  <https://www.zang.io/products/cloud>`_
 
-To read the official documentation, please visit: `Zang Docs <http://docs.zang.io/aspx/docs>`_.
+To read the official documentation, please visit: `Avaya CPaaS Docs <http://docs.zang.io/aspx/docs>`_.
 
 
 Installation
@@ -27,7 +27,7 @@ Usage
 
 Authorization
 ----
-In order to authorize against Zang Cloud services you'll have to define authentication credentials. 
+In order to authorize against Avaya OneCloud™️ CPaaS  services you'll have to define authentication credentials.
 
 .. code-block:: bash
 
@@ -39,7 +39,7 @@ In order to authorize against Zang Cloud services you'll have to define authenti
 REST
 ----
 
-See the `Zang REST API documentation <http://docs.zang.io/aspx/rest>`_
+See the `Avaya CPaaS REST API documentation <http://docs.zang.io/aspx/rest>`_
 for more information.
 
 **NOTE: ** Please go through tests for specific endpoint to see the example
@@ -82,7 +82,7 @@ For more information please visit the `Zang InboundXML documentation
 
   ixml, err := New(Response{Say: &Say{
     Voice: "female",
-    Value: "Welcome to Zang!",
+    Value: "Welcome to Avaya CPaaS!",
     Loop:  3,
   }})
 
@@ -96,7 +96,7 @@ will render
 
     <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     <Response>
-        <Say loop="3" voice="female" language="en">Welcome to Zang!</Say>
+        <Say loop="3" voice="female" language="en">Welcome to Avaya CPaaS!</Say>
     </Response>
 
 .. code-block:: xml
