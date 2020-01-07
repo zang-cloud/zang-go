@@ -142,7 +142,7 @@ func (r *Request) request(method string, url string, params map[string]string) (
 	}
 
 	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("An unexpected response returned from Zang API (Status Code: %d): %s", resp.StatusCode, bodyBytes)
+		return nil, fmt.Errorf("An unexpected response returned from Avaya CPaaS API (Status Code: %d): %s", resp.StatusCode, bodyBytes)
 	}
 
 	return &Response{

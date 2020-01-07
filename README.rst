@@ -72,7 +72,7 @@ InboundXML
 ==========
 
 InboundXML is an XML dialect which enables you to control phone call flow.
-For more information please visit the `Zang InboundXML documentation
+For more information please visit the `Avaya CPaaS InboundXML documentation
 <http://docs.zang.io/aspx/inboundxml>`_.
 
 <Say> Example
