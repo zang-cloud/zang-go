@@ -36,6 +36,39 @@ In order to authorize against Avaya OneCloud™️ CPaaS  services you'll have t
     
 .. code-block:: bash
 
+Import
+----
+
+.. code-block:: golang
+    
+    import (
+        zang "github.com/zang-cloud/zang-go"
+    )
+
+.. code-block:: golang
+
+Logging
+----
+
+In order to use the Avaya OneCloud CPaaS library, logging must be initialized:
+
+.. code-block:: golang
+
+    package main
+    import (
+    	log "github.com/sirupsen/logrus"
+    	zang "github.com/zang-cloud/zang-go"
+    )
+    func init() {
+    	log.SetLevel(log.DebugLevel)
+    	formatter := &log.TextFormatter{
+    		FullTimestamp: true,
+    	}
+	    log.SetFormatter(formatter)
+    }
+    
+.. code-block:: golang
+
 REST
 ----
 
@@ -49,22 +82,24 @@ Send SMS Example
 
 .. code-block:: golang
 
-  package example
-
-  import (
-  	"fmt"
-  	zang "github.com/zang-cloud/zang-go"
-  )
-
-  client, _ := zang.NewClient()
-
-  response, _ := client.SendSms(map[string]string{
-    "From": "E.164 Number Format",
-    "To":   "E.164 Number Format",
-    "Body": "SMS Body",
-  })
-
-  fmt.Printf("Send sms response: %+v", response)
+    func sendsms() {
+    	client, err := zang.NewClient()
+    	if err != nil {
+	    	log.Errorln("Client creation failed:", err)
+	    	return
+	    }
+	    log.Debugln("Sending request")
+	    response, err := client.SendSms(map[string]string{
+    		"From": "E164 From",
+    		"To":   "E164 To",
+    		"Body": "Test Body,
+    	})
+        
+     func main() {
+    	os.Setenv("ZANG_CLOUD_ACCOUNT_SID", "{YourAccountSid}")
+    	os.Setenv("ZANG_CLOUD_AUTH_TOKEN", "{YourAccessToken}")
+	    sendsms()
+    }
 
 .. code-block:: golang
 
