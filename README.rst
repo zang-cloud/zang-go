@@ -32,7 +32,7 @@ In order to authorize against Avaya OneCloud™️ CPaaS  services you'll have t
 .. code-block:: bash
 
     export ZANG_CLOUD_ACCOUNT_SID="{YourAccountSid}"
-    export ZANG_CLOUD_ACCESS_TOKEN="{YourAccessToken}"
+    export ZANG_CLOUD_AUTH_TOKEN="{YourAccessToken}"
     
 .. code-block:: bash
 
