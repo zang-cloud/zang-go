@@ -6,6 +6,7 @@ package inboundxml
 
 // Response - Main InboundXML verbs container element. REQUIRED
 // More information at: http://docs.zang.io/docs/response
+// More information at: http://docs.zang.io/docs/response
 type Response struct {
 	Say               *Say               `xml:"Say,omitempty"`
 	Play              *Play              `xml:"Play,omitempty"`
@@ -21,4 +22,5 @@ type Response struct {
 	Redirect          *Redirect          `xml:"Redirect,omitempty"`
 	Sms               *Sms               `xml:"Sms,omitempty"`
 	Mms               *Mms               `xml:"Mms,omitempty"`
+	Connect           *Connect           `xml:"Connect,omitempty"`
 }
