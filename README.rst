@@ -36,6 +36,42 @@ In order to authorize against Avaya OneCloud™️ CPaaS  services you'll have t
     
 .. code-block:: bash
 
+You can also change the base API url in /constants.go.
+
+The default value is set as follows:
+
+.. code-block:: bash
+
+    const (
+	// ZangApiUrl -
+	ZangApiUrl = "https://api.zang.io"
+	// ZangApiVersion -
+	ZangApiVersion = "v2"
+	// DefaultResponseContentType -
+	DefaultResponseContentType = "json"
+    )
+
+.. code-block:: bash
+
+The base API URL and api version for US(new) and EU deployments are:
+US: https://api-us.cpaas.avayacloud.com/v2
+EU: https://api-eu.cpaas.avayacloud.com/v2
+
+For example, if you want to use EU deployments:
+
+.. code-block:: bash
+
+    const (
+	// ZangApiUrl -
+	ZangApiUrl = "api-eu.cpaas.avayacloud.com"
+	// ZangApiVersion -
+	ZangApiVersion = "v2"
+	// DefaultResponseContentType -
+	DefaultResponseContentType = "json"
+    )
+
+.. code-block:: bash
+
 Import
 ----
 
