@@ -5,7 +5,6 @@
 package inboundxml
 
 import (
-	"fmt"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -26,8 +25,7 @@ func TestReferElement(t *testing.T) {
 				Username: "username",
 			},
 		}})
-		fmt.Println("XML :")
-		fmt.Println(ixml)
+
 		So(ixml, ShouldNotBeNil)
 		So(ixml.String(), ShouldEqual, "<Response><Refer action=\"https://example.com/actionURL\" method=\"POST\" timeout=\"180\" callbackUrl=\"https://example.com/callbackURL\" callbackMethod=\"POST\"><Sip username=\"username\" password=\"pass\">username@example.com</Sip></Refer></Response>")
 		So(err, ShouldBeNil)
