@@ -14,6 +14,7 @@ type Response struct {
 	Invalid           *Invalid           `xml:"Invalid,omitempty"`
 	PlayLastRecording *PlayLastRecording `xml:"PlayLastRecording,omitempty"`
 	Dial              *Dial              `xml:"Dial,omitempty"`
+	Refer             *Refer             `xml:"Refer,omitempty"`
 	Gather            *Gather            `xml:"Gather,omitempty"`
 	Hangup            *Hangup            `xml:"Hangup,omitempty"`
 	Pause             *Pause             `xml:"Pause,omitempty"`

@@ -41,6 +41,6 @@ func TestInboundXMLResponse(t *testing.T) {
 		ixml, err := New(Response{Invalid: &Invalid{}})
 		So(ixml, ShouldBeNil)
 		So(err, ShouldNotBeNil)
-		So(err.Error(), ShouldContainSubstring, "Document validation error")
+		So(err.Error(), ShouldContainSubstring, "Element 'Invalid': This element is not expected.")
 	})
 }
